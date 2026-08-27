@@ -1,0 +1,2 @@
+Official opencode docs fetched from https://opencode.ai/docs/<page>.md on 2026-06-06T15:35:50Z
+opencode CLI version: 1.14.27

@@ -1,0 +1,35 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*
+!.env.example
+
+# Benchmark checkouts and agent runtimes are external; see docs/benchmarks.md
+/third_party
+.pi-agent/
+
+# Run artifacts: TRAIN controller runs, blind-TEST baselines and candidates
+runs/
+results/
+*.log
+logs/
+
+# Local caches
+.cache/
+.uv-cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+/build/
+/dist/
+.pytest_cache/
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

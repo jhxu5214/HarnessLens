@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "harnesslens"
+version = "1.0.0"
+description = "Evidence-driven automatic iteration of agent harnesses"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+dependencies = [
+    "pyyaml>=6.0",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+# Needed only by the tau2 MCP bridge, which normally runs inside the
+# third_party/tau3-bench virtualenv where loguru is already present.
+tau2 = ["loguru>=0.7"]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+include = ["harnesslens*"]
+
+[tool.setuptools.package-data]
+"harnesslens.benchmarks" = ["*.mjs"]
+
+[tool.pytest.ini_options]
+# Tests import both `harnesslens.*` and the public top-level entrypoints, so the
+# repository root has to be on sys.path.
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+    "live: exercises a real agent runtime or provider and is skipped by default",
+]
